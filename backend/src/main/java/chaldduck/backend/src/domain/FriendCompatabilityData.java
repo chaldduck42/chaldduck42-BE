@@ -15,13 +15,13 @@ public class FriendCompatabilityData {
     private User friend;
 
     @ManyToOne //link_owner 링크의 주인
-    private User user;
+    private User linkOwner;
 
     @OneToOne //mbti_result_id
-    private MbtiCompatibilityData mbtiCompatibilityData;
+    private MbtiCompatibilityData mbtiResultId;
 
     @OneToOne
-    private SajuCompatabilityData sajuCompatabilityData;
+    private SajuCompatabilityData sajuCompatability;
 
 
 
