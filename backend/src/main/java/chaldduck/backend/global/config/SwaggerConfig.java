@@ -1,4 +1,4 @@
-package chaldduck.backend.config;
+package chaldduck.backend.global.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
