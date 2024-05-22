@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Entity
 @Getter
-public class FriendCompatabilityData {
+public class FriendCompatibilityData {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
@@ -21,7 +21,7 @@ public class FriendCompatabilityData {
     private MbtiCompatibilityData mbtiResultId;
 
     @OneToOne
-    private SajuCompatabilityData sajuCompatability;
+    private SajuCompatibilityData sajuCompatability;
 
 
 

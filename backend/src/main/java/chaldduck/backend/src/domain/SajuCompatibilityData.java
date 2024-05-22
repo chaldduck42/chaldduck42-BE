@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Entity
 @Getter
-public class SajuCompatabilityData {
+public class SajuCompatibilityData {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
