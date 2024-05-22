@@ -12,10 +12,10 @@ public class FriendCompatabilityData {
     private Integer id;
 
     @OneToOne //friend(FK)-친구
-    private User friend;
+    private Users friend;
 
     @ManyToOne //link_owner 링크의 주인
-    private User linkOwner;
+    private Users linkOwner;
 
     @OneToOne //mbti_result_id
     private MbtiCompatibilityData mbtiResultId;

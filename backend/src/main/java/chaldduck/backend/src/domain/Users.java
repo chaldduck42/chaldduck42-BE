@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Getter
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
