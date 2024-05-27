@@ -20,6 +20,7 @@ public class BackendApplication {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
+	// TODO test 데이터이므로 추후 DB 구축 후 삭제 필요
 	@PostConstruct
 	public void init() {
 		MbtiQuestion mbtiQuestion1 = MbtiQuestion.builder()
