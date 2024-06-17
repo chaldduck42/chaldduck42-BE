@@ -1,11 +1,17 @@
 package chaldduck.backend.src.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-public class SajuCompatabilityData {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class SajuCompatibilityData {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)

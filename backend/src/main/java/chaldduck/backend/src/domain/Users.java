@@ -1,13 +1,19 @@
 package chaldduck.backend.src.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Getter
-public class User {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
@@ -24,4 +30,5 @@ public class User {
 
     @Column(name = "mbti", nullable = false)
     private String mbti;
+
 }

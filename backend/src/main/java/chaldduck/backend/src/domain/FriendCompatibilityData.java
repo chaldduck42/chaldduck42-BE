@@ -11,18 +11,25 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Saju {
+public class FriendCompatibilityData {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "fiveHang", nullable = false)
-    private String fiveHang;
+    @OneToOne //friend(FK)-친구
+    private Users friend;
 
-    @Column(name = "image", nullable = false)
-    private String image;
+    @ManyToOne //link_owner 링크의 주인
+    private Users linkOwner;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @OneToOne //mbti_result_id
+    private MbtiCompatibilityData mbtiResultId;
+
+    @OneToOne
+    private SajuCompatibilityData sajuCompatability;
+
+
+
+
 }
