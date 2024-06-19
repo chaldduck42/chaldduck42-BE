@@ -72,13 +72,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer5 = MbtiAnswer.builder()
 				.id(5)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion3)
 				.answer("소수의 친구들과 진지한 대화") //i
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer6 = MbtiAnswer.builder()
 				.id(6)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion3)
 				.answer("내가 먼저 친해지자며 말건다") //e
 				.score(1)
 				.build();
@@ -93,13 +93,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer7 = MbtiAnswer.builder()
 				.id(7)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion4)
 				.answer("남들이 하는대로 따라가는 것이 좋다") //s
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer8 = MbtiAnswer.builder()
 				.id(8)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion4)
 				.answer("스스로 나만의 방법을 만들어 나가는게 좋다") //n
 				.score(1)
 				.build();
@@ -114,13 +114,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer9 = MbtiAnswer.builder()
 				.id(9)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion5)
 				.answer("\"덥겠다..\" 현실적인 생각을 해본다 ") //s
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer10 = MbtiAnswer.builder()
 				.id(10)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion5)
 				.answer("\"떨어지면 어떡하지? 나무에 떨어지면 살 수 있을까?\"라며 상상의 나래를 펼친다 ") //n
 				.score(1)
 				.build();
@@ -135,13 +135,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer11 = MbtiAnswer.builder()
 				.id(11)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion6)
 				.answer("꾸준하고 참을성이 있다") //s
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer12 = MbtiAnswer.builder()
 				.id(12)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion6)
 				.answer("창의적이고 독창적이다") //n
 				.score(1)
 				.build();
@@ -156,13 +156,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer13 = MbtiAnswer.builder()
 				.id(13)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion7)
 				.answer("\"성격은 별론데 일 하나는 똑부러지게 잘해~\"") //t
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer14 = MbtiAnswer.builder()
 				.id(14)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion7)
 				.answer("\"일은 좀 못해도 사람은 참 좋아~\"") //f
 				.score(1)
 				.build();
@@ -177,13 +177,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer15 = MbtiAnswer.builder()
 				.id(15)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion8)
 				.answer("나라면 저렇게 안했을텐데.. 왜 울지?") //t
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer16 = MbtiAnswer.builder()
 				.id(16)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion8)
 				.answer("영화가 너무 슬펐어..") //f
 				.score(1)
 				.build();
@@ -198,13 +198,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer17 = MbtiAnswer.builder()
 				.id(17)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion9)
 				.answer("너가 뭘 잘못했는데? 큰 실수했어?") //t
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer18 = MbtiAnswer.builder()
 				.id(18)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion9)
 				.answer("헐 괜찮아? 그 상사 너무하네~") //f
 				.score(1)
 				.build();
@@ -219,13 +219,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer19 = MbtiAnswer.builder()
 				.id(19)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion10)
 				.answer("우리 어디서 몇시에 볼래?") //p
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer20 = MbtiAnswer.builder()
 				.id(20)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion10)
 				.answer("그때 예약해둔 맛집 앞에서 12까지 봐~") //j
 				.score(1)
 				.build();
@@ -240,13 +240,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer21 = MbtiAnswer.builder()
 				.id(21)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion11)
 				.answer("음 어디다 뒀지? 책상 한번 봐볼래?") //p
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer22 = MbtiAnswer.builder()
 				.id(22)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion11)
 				.answer("그거 왼쪽 서랍 세번째 칸에 있어") //j
 				.score(1)
 				.build();
@@ -261,13 +261,13 @@ public class BackendApplication {
 				.build();
 		MbtiAnswer mbtiAnswer23 = MbtiAnswer.builder()
 				.id(23)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion12)
 				.answer("막판 스퍼트! 1분 1초도 놓칠 수 없어!") //p
 				.score(-1)
 				.build();
 		MbtiAnswer mbtiAnswer24 = MbtiAnswer.builder()
 				.id(24)
-				.mbtiQuestion(mbtiQuestion2)
+				.mbtiQuestion(mbtiQuestion12)
 				.answer("이거 끝났어! 내가 미리 다 해놨지~") //j
 				.score(1)
 				.build();
