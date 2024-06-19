@@ -1,7 +1,9 @@
 package chaldduck.backend.src.dto.response;
 
 import chaldduck.backend.src.domain.MbtiAnswer;
+import lombok.Getter;
 
+@Getter
 public class MbtiAnswerDTO {
 
     private String option;

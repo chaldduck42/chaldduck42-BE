@@ -28,34 +28,32 @@ public class MbtiService {
         // E&I
         List<MbtiQuestion> eiQuestions = mbtiQuestionRepository.findAllByKind(Mbti.EI.getValue());
         List<MbtiQuestionDTO> mbtiQuestionDTOList = new ArrayList<>();
-        for (MbtiQuestion etQuestion : eiQuestions) {
-            List<MbtiAnswer> eiAnswers = mbtiAnswerRepository.findAllByMbtiQuestion(etQuestion);
-            List<MbtiAnswerDTO> mbtiAnswerDTOList = eiAnswers.stream().map(MbtiAnswerDTO::of).toList();
-            MbtiQuestionDTO mbtiQuestionDTO = MbtiQuestionDTO.of(etQuestion.getQuestion(), mbtiAnswerDTOList);
-            mbtiQuestionDTOList.add(mbtiQuestionDTO);
-        }
-        MbtiQuestionResponseDTO eiResponse = MbtiQuestionResponseDTO.of(Mbti.EI.getValue(), mbtiQuestionDTOList);
-        mbtiQuestionResponseDTOList.add(eiResponse);
+        getMBtiQuestionResponseDTO(eiQuestions, Mbti.EI, mbtiQuestionResponseDTOList);
 
         // S&N
         List<MbtiQuestion> snQuestions = mbtiQuestionRepository.findAllByKind(Mbti.SN.getValue());
-        for (MbtiQuestion snQuestion : snQuestions) {
-            List<MbtiAnswer> snAnswers = mbtiAnswerRepository.findAllByMbtiQuestion(snQuestion);
-
-        }
+        getMBtiQuestionResponseDTO(snQuestions, Mbti.SN, mbtiQuestionResponseDTOList);
 
         // T&F
         List<MbtiQuestion> tfQuestions = mbtiQuestionRepository.findAllByKind(Mbti.TF.getValue());
-        for (MbtiQuestion tfQuestion : tfQuestions) {
-            List<MbtiAnswer> tfAnswers = mbtiAnswerRepository.findAllByMbtiQuestion(tfQuestion);
-        }
+        getMBtiQuestionResponseDTO(tfQuestions, Mbti.TF, mbtiQuestionResponseDTOList);
 
         // J&P
         List<MbtiQuestion> jpQuestions = mbtiQuestionRepository.findAllByKind(Mbti.JP.getValue());
-        for (MbtiQuestion jpQuestion : jpQuestions) {
-            List<MbtiAnswer> jpAnswers = mbtiAnswerRepository.findAllByMbtiQuestion(jpQuestion);
-        }
+        getMBtiQuestionResponseDTO(jpQuestions, Mbti.JP, mbtiQuestionResponseDTOList);
 
-        return null;
+        return mbtiQuestionResponseDTOList;
+    }
+
+    private void getMBtiQuestionResponseDTO(List<MbtiQuestion> mbtiQuestions, Mbti mbti, List<MbtiQuestionResponseDTO> mbtiQuestionResponseDTOList) {
+        List<MbtiQuestionDTO> mbtiQuestionDTOList = new ArrayList<>();
+        for (MbtiQuestion mbtiQuestion : mbtiQuestions) {
+            List<MbtiAnswer> mbtiAnswerList = mbtiAnswerRepository.findAllByMbtiQuestion(mbtiQuestion);
+            List<MbtiAnswerDTO> mbtiAnswerDTOList = mbtiAnswerList.stream().map(MbtiAnswerDTO::of).toList();
+            MbtiQuestionDTO mbtiQuestionDTO = MbtiQuestionDTO.of(mbtiQuestion.getQuestion(), mbtiAnswerDTOList);
+            mbtiQuestionDTOList.add(mbtiQuestionDTO);
+        }
+        MbtiQuestionResponseDTO mbtiQuestionResponseDTO = MbtiQuestionResponseDTO.of(mbti.getValue(), mbtiQuestionDTOList);
+        mbtiQuestionResponseDTOList.add(mbtiQuestionResponseDTO);
     }
 }

@@ -2,9 +2,11 @@ package chaldduck.backend.src.dto.response;
 
 import chaldduck.backend.src.domain.MbtiAnswer;
 import chaldduck.backend.src.domain.MbtiQuestion;
+import lombok.Getter;
 
 import java.util.List;
 
+@Getter
 public class MbtiQuestionResponseDTO {
 
     private String type;
