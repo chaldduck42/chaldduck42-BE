@@ -1,0 +1,2 @@
+### 생년월일 결과
+POST localhost:8080/api/user/info
