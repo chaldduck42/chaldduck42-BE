@@ -1,11 +1,11 @@
 package chaldduck.backend.src.controller;
 
+import chaldduck.backend.src.dto.request.MbtiResultRequestDTO;
 import chaldduck.backend.src.dto.response.MbtiQuestionResponseDTO;
+import chaldduck.backend.src.dto.response.MbtiResultResponseDTO;
 import chaldduck.backend.src.service.MbtiService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +19,10 @@ public class MbtiController {
     @GetMapping("/questions")
     public List<MbtiQuestionResponseDTO> getQuestions() {
         return mbtiService.getQuestions();
+    }
+
+    @PostMapping("/result")
+    public MbtiResultResponseDTO getResult(@RequestBody List<MbtiResultRequestDTO> mbtiResultRequestDTOList) {
+        return mbtiService.getResult(mbtiResultRequestDTOList);
     }
 }

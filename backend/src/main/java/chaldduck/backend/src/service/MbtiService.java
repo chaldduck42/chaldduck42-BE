@@ -3,9 +3,11 @@ package chaldduck.backend.src.service;
 import chaldduck.backend.global.enums.Mbti;
 import chaldduck.backend.src.domain.MbtiAnswer;
 import chaldduck.backend.src.domain.MbtiQuestion;
+import chaldduck.backend.src.dto.request.MbtiResultRequestDTO;
 import chaldduck.backend.src.dto.response.MbtiAnswerDTO;
 import chaldduck.backend.src.dto.response.MbtiQuestionDTO;
 import chaldduck.backend.src.dto.response.MbtiQuestionResponseDTO;
+import chaldduck.backend.src.dto.response.MbtiResultResponseDTO;
 import chaldduck.backend.src.repository.MbtiAnswerRepository;
 import chaldduck.backend.src.repository.MbtiQuestionRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +29,6 @@ public class MbtiService {
         List<MbtiQuestionResponseDTO> mbtiQuestionResponseDTOList = new ArrayList<>();
         // E&I
         List<MbtiQuestion> eiQuestions = mbtiQuestionRepository.findAllByKind(Mbti.EI.getValue());
-        List<MbtiQuestionDTO> mbtiQuestionDTOList = new ArrayList<>();
         getMBtiQuestionResponseDTO(eiQuestions, Mbti.EI, mbtiQuestionResponseDTOList);
 
         // S&N
@@ -43,6 +44,28 @@ public class MbtiService {
         getMBtiQuestionResponseDTO(jpQuestions, Mbti.JP, mbtiQuestionResponseDTOList);
 
         return mbtiQuestionResponseDTOList;
+    }
+
+    public MbtiResultResponseDTO getResult(List<MbtiResultRequestDTO> mbtiResultRequestDTOList) {
+        StringBuilder mbti = new StringBuilder();
+        for (MbtiResultRequestDTO mbtiResultRequestDTO : mbtiResultRequestDTOList) {
+            String type = mbtiResultRequestDTO.getType();
+            int score = mbtiResultRequestDTO.getScore();
+            if (type.equals(Mbti.EI.getValue())) {
+                if (score >= 0) mbti.append("E");
+                else mbti.append("I");
+            } else if (type.equals(Mbti.SN.getValue())) {
+                if (score >= 0) mbti.append("S");
+                else mbti.append("N");
+            } else if (type.equals(Mbti.TF.getValue())) {
+                if (score >= 0) mbti.append("T");
+                else mbti.append("F");
+            } else if (type.equals(Mbti.JP.getValue())) {
+                if (score >= 0) mbti.append("J");
+                else mbti.append("P");
+            }
+        }
+        return MbtiResultResponseDTO.of(mbti.toString());
     }
 
     private void getMBtiQuestionResponseDTO(List<MbtiQuestion> mbtiQuestions, Mbti mbti, List<MbtiQuestionResponseDTO> mbtiQuestionResponseDTOList) {
