@@ -2,21 +2,18 @@ package chaldduck.backend.src.service;
 
 import chaldduck.backend.global.enums.Mbti;
 import chaldduck.backend.src.domain.MbtiAnswer;
+import chaldduck.backend.src.domain.MbtiCompatibilityData;
 import chaldduck.backend.src.domain.MbtiQuestion;
 import chaldduck.backend.src.dto.request.MbtiResultRequestDTO;
-import chaldduck.backend.src.dto.response.MbtiAnswerDTO;
-import chaldduck.backend.src.dto.response.MbtiQuestionDTO;
-import chaldduck.backend.src.dto.response.MbtiQuestionResponseDTO;
-import chaldduck.backend.src.dto.response.MbtiResultResponseDTO;
+import chaldduck.backend.src.dto.response.*;
 import chaldduck.backend.src.repository.MbtiAnswerRepository;
+import chaldduck.backend.src.repository.MbtiCompatibilityDataRepository;
 import chaldduck.backend.src.repository.MbtiQuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +21,7 @@ public class MbtiService {
 
     private final MbtiQuestionRepository mbtiQuestionRepository;
     private final MbtiAnswerRepository mbtiAnswerRepository;
+    private final MbtiCompatibilityDataRepository mbtiCompatibilityDataRepository;
 
     public List<MbtiQuestionResponseDTO> getQuestions() {
         List<MbtiQuestionResponseDTO> mbtiQuestionResponseDTOList = new ArrayList<>();
@@ -66,6 +64,12 @@ public class MbtiService {
             }
         }
         return MbtiResultResponseDTO.of(mbti.toString());
+    }
+
+    public MbtiFriendCompatibilityResponseDTO getFriendCompatibility(String myMbti, String friendMbti) {
+        // 내 mbti와 친구 mbti 기준으로 궁합 정보(설명, 이미지) 가져오기
+        MbtiCompatibilityData mbtiCompatibilityData = mbtiCompatibilityDataRepository.findByMbti1AndMbti2(myMbti, friendMbti);
+        return MbtiFriendCompatibilityResponseDTO.of(mbtiCompatibilityData.getDescription(), mbtiCompatibilityData.getImage());
     }
 
     private void getMBtiQuestionResponseDTO(List<MbtiQuestion> mbtiQuestions, Mbti mbti, List<MbtiQuestionResponseDTO> mbtiQuestionResponseDTOList) {

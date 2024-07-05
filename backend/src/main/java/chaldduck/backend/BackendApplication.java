@@ -1,8 +1,10 @@
 package chaldduck.backend;
 
 import chaldduck.backend.src.domain.MbtiAnswer;
+import chaldduck.backend.src.domain.MbtiCompatibilityData;
 import chaldduck.backend.src.domain.MbtiQuestion;
 import chaldduck.backend.src.repository.MbtiAnswerRepository;
+import chaldduck.backend.src.repository.MbtiCompatibilityDataRepository;
 import chaldduck.backend.src.repository.MbtiQuestionRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ public class BackendApplication {
 
 	private final MbtiAnswerRepository mbtiAnswerRepository;
 	private final MbtiQuestionRepository mbtiQuestionRepository;
+	private final MbtiCompatibilityDataRepository mbtiCompatibilityDataRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
@@ -274,5 +277,88 @@ public class BackendApplication {
 		mbtiQuestionRepository.save(mbtiQuestion12);
 		mbtiAnswerRepository.save(mbtiAnswer23);
 		mbtiAnswerRepository.save(mbtiAnswer24);
+
+		////////////////////////////////////////
+		MbtiCompatibilityData mbtiCompatibilityData1 = MbtiCompatibilityData.builder()
+				.id(1)
+				.mbti1("ISTJ")
+				.mbti2("ISTJ")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData2 = MbtiCompatibilityData.builder()
+				.id(2)
+				.mbti1("ISTJ")
+				.mbti2("ISFJ")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData3 = MbtiCompatibilityData.builder()
+				.id(3)
+				.mbti1("ISTJ")
+				.mbti2("INFJ")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData4 = MbtiCompatibilityData.builder()
+				.id(4)
+				.mbti1("ISTJ")
+				.mbti2("INTJ")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData5 = MbtiCompatibilityData.builder()
+				.id(5)
+				.mbti1("ISTJ")
+				.mbti2("ISTP")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData6 = MbtiCompatibilityData.builder()
+				.id(6)
+				.mbti1("ISTJ")
+				.mbti2("ISFP")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData7 = MbtiCompatibilityData.builder()
+				.id(7)
+				.mbti1("ISTJ")
+				.mbti2("INFP")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData8 = MbtiCompatibilityData.builder()
+				.id(8)
+				.mbti1("ISTJ")
+				.mbti2("INTP")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData9 = MbtiCompatibilityData.builder()
+				.id(9)
+				.mbti1("ISTJ")
+				.mbti2("ESTP")
+				.image("image")
+				.description("description")
+				.build();
+		MbtiCompatibilityData mbtiCompatibilityData10 = MbtiCompatibilityData.builder()
+				.id(10)
+				.mbti1("ISTJ")
+				.mbti2("ESFP")
+				.image("image")
+				.description("description")
+				.build();
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData1);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData2);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData3);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData4);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData5);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData6);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData7);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData8);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData9);
+		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData10);
+
 	}
 }

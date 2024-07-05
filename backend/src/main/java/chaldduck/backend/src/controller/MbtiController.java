@@ -1,6 +1,7 @@
 package chaldduck.backend.src.controller;
 
 import chaldduck.backend.src.dto.request.MbtiResultRequestDTO;
+import chaldduck.backend.src.dto.response.MbtiFriendCompatibilityResponseDTO;
 import chaldduck.backend.src.dto.response.MbtiQuestionResponseDTO;
 import chaldduck.backend.src.dto.response.MbtiResultResponseDTO;
 import chaldduck.backend.src.service.MbtiService;
@@ -24,5 +25,10 @@ public class MbtiController {
     @PostMapping("/result")
     public MbtiResultResponseDTO getResult(@RequestBody List<MbtiResultRequestDTO> mbtiResultRequestDTOList) {
         return mbtiService.getResult(mbtiResultRequestDTOList);
+    }
+
+    @GetMapping("/friend/compatibility")
+    public MbtiFriendCompatibilityResponseDTO getFriendCompatibility(@RequestParam("myMbti") String myMbti, @RequestParam("friendMbti") String friendMbti) {
+        return mbtiService.getFriendCompatibility(myMbti, friendMbti);
     }
 }

@@ -28,8 +28,4 @@ public class FriendCompatibilityData {
 
     @OneToOne
     private SajuCompatibilityData sajuCompatability;
-
-
-
-
 }
