@@ -1,7 +1,7 @@
 package chaldduck.backend.src.service;
-
 import chaldduck.backend.src.domain.Users;
 import chaldduck.backend.src.dto.request.UsersInfoRequestDTO;
+import chaldduck.backend.src.dto.response.UsersAllInfoResponseDTO;
 import chaldduck.backend.src.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,5 +18,10 @@ public class UsersService {
                 //.saju()
                 .build();
         return usersRepository.save(user);
+    }
+
+    public UsersAllInfoResponseDTO getUserInfo(String nickname) {
+        Users user = usersRepository.findByNickname(nickname);
+        return UsersAllInfoResponseDTO.of
     }
 }

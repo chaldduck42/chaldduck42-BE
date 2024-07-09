@@ -1,16 +1,10 @@
 package chaldduck.backend.src.controller;
 
-import chaldduck.backend.src.domain.Users;
 import chaldduck.backend.src.dto.request.UsersInfoRequestDTO;
 import chaldduck.backend.src.service.UsersService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -23,6 +17,12 @@ public class UsersController {
         usersService.saveUser(usersInfoRequestDTO);
         //일단 dto 입력받아오고, 추가적으로 내가 그 정보로 갑자 만들어서 db에 저장
         //return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/info")
+    public UsersAllInfoResponseDTO getUserInfo(@RequestBody String nickname) {
+
+        return usersService.getUserInfo(nickname);
 
     }
 }
