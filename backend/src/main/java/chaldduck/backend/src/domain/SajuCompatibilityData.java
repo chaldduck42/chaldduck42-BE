@@ -17,10 +17,12 @@ public class SajuCompatibilityData {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "saju_1_id")
     private Saju saju1;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "saju_2_id")
     private Saju saju2;
 
     @Column(name = "image", nullable = false)

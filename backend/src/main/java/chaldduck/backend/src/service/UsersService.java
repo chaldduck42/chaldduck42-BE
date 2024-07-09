@@ -1,5 +1,7 @@
 package chaldduck.backend.src.service;
 import chaldduck.backend.global.enums.Mbti;
+
+import chaldduck.backend.src.domain.Saju;
 import chaldduck.backend.src.domain.Users;
 import chaldduck.backend.src.dto.request.UsersInfoRequestDTO;
 import chaldduck.backend.src.dto.response.UsersGetInfoResponseDTO;
@@ -16,7 +18,9 @@ public class UsersService {
         Users user = Users.builder()
                 .nickname(usersInfoRequestDTO.getNickname())
                 .birth(usersInfoRequestDTO.getBirth())
-                //.saju()
+                .saju(Saju.builder()
+                        .fiveHang("갑자")
+                        .build())
                 .build();
         return usersRepository.save(user);
     }
