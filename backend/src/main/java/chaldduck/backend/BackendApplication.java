@@ -1,15 +1,15 @@
 package chaldduck.backend;
 
-import chaldduck.backend.src.domain.MbtiAnswer;
-import chaldduck.backend.src.domain.MbtiCompatibilityData;
-import chaldduck.backend.src.domain.MbtiQuestion;
-import chaldduck.backend.src.repository.MbtiAnswerRepository;
-import chaldduck.backend.src.repository.MbtiCompatibilityDataRepository;
-import chaldduck.backend.src.repository.MbtiQuestionRepository;
+import chaldduck.backend.src.domain.*;
+import chaldduck.backend.src.repository.*;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.security.SecureRandom;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @SpringBootApplication
 @RequiredArgsConstructor
@@ -18,6 +18,10 @@ public class BackendApplication {
 	private final MbtiAnswerRepository mbtiAnswerRepository;
 	private final MbtiQuestionRepository mbtiQuestionRepository;
 	private final MbtiCompatibilityDataRepository mbtiCompatibilityDataRepository;
+	private final SajuCompatabilityDataRepository sajuCompatabilityDataRepository;
+	private final SajuRepository sajuRepository;
+	private final UsersRepository usersRepository;
+	private final FriendCompatabilityDataRepository friendCompatabilityDataRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
@@ -25,7 +29,7 @@ public class BackendApplication {
 
 	// TODO test 데이터이므로 추후 DB 구축 후 삭제 필요
 	@PostConstruct
-	public void init() {
+	public void init() throws ParseException {
 		MbtiQuestion mbtiQuestion1 = MbtiQuestion.builder()
 				.id(1)
 				.kind("EI")
@@ -360,5 +364,217 @@ public class BackendApplication {
 		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData9);
 		mbtiCompatibilityDataRepository.save(mbtiCompatibilityData10);
 
+		////////////////////////////////////////
+		Saju saju1 = Saju.builder()
+				.id(1)
+				.fiveHang("갑자")
+				.image("saju1 image")
+				.description("saju1 description")
+				.build();
+		Saju saju2 = Saju.builder()
+				.id(2)
+				.fiveHang("을축")
+				.image("saju2 image")
+				.description("saju2 description")
+				.build();
+		Saju saju3 = Saju.builder()
+				.id(3)
+				.fiveHang("병인")
+				.image("saju3 image")
+				.description("saju3 description")
+				.build();
+		Saju saju4 = Saju.builder()
+				.id(4)
+				.fiveHang("정묘")
+				.image("saju4 image")
+				.description("saju4 description")
+				.build();
+		Saju saju5 = Saju.builder()
+				.id(5)
+				.fiveHang("무기")
+				.image("saju5 image")
+				.description("saju5 description")
+				.build();
+		Saju saju6 = Saju.builder()
+				.id(6)
+				.fiveHang("기진")
+				.image("saju6 image")
+				.description("saju6 description")
+				.build();
+		sajuRepository.save(saju1);
+		sajuRepository.save(saju2);
+		sajuRepository.save(saju3);
+		sajuRepository.save(saju4);
+		sajuRepository.save(saju5);
+		sajuRepository.save(saju6);
+
+		////////////////////////////////////////
+		SajuCompatibilityData sajuCompatibilityData1 = SajuCompatibilityData.builder()
+				.id(1)
+				.saju1(saju1)
+				.saju2(saju2)
+				.image("image")
+				.description("description")
+				.build();
+		SajuCompatibilityData sajuCompatibilityData2 = SajuCompatibilityData.builder()
+				.id(2)
+				.saju1(saju1)
+				.saju2(saju3)
+				.image("image")
+				.description("description")
+				.build();
+		SajuCompatibilityData sajuCompatibilityData3 = SajuCompatibilityData.builder()
+				.id(3)
+				.saju1(saju1)
+				.saju2(saju4)
+				.image("image")
+				.description("description")
+				.build();
+		SajuCompatibilityData sajuCompatibilityData4 = SajuCompatibilityData.builder()
+				.id(4)
+				.saju1(saju1)
+				.saju2(saju5)
+				.image("image")
+				.description("description")
+				.build();
+		SajuCompatibilityData sajuCompatibilityData5 = SajuCompatibilityData.builder()
+				.id(5)
+				.saju1(saju1)
+				.saju2(saju6)
+				.image("image")
+				.description("description")
+				.build();
+		SajuCompatibilityData sajuCompatibilityData6 = SajuCompatibilityData.builder()
+				.id(6)
+				.saju1(saju2)
+				.saju2(saju3)
+				.image("image")
+				.description("description")
+				.build();
+		sajuCompatabilityDataRepository.save(sajuCompatibilityData1);
+		sajuCompatabilityDataRepository.save(sajuCompatibilityData2);
+		sajuCompatabilityDataRepository.save(sajuCompatibilityData3);
+		sajuCompatabilityDataRepository.save(sajuCompatibilityData4);
+		sajuCompatabilityDataRepository.save(sajuCompatibilityData5);
+		sajuCompatabilityDataRepository.save(sajuCompatibilityData6);
+
+		////////////////////////////////////////
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Users users1 = Users.builder()
+				.id(1)
+				.saju(saju1)
+				.birth(sdf.parse("1996-01-01"))
+				.mbti("ISTJ")
+				.nickname("예림")
+				.url("He194kx")
+				.build();
+		Users users2 = Users.builder()
+				.id(2)
+				.saju(saju2)
+				.birth(sdf.parse("1996-01-01"))
+				.mbti("ESTJ")
+				.nickname("보경")
+				.url(generateRandomString())
+				.build();
+		Users users3 = Users.builder()
+				.id(3)
+				.saju(saju3)
+				.birth(sdf.parse("1996-01-01"))
+				.mbti("ISTP")
+				.nickname("유림")
+				.url(generateRandomString())
+				.build();
+		Users users4 = Users.builder()
+				.id(4)
+				.saju(saju4)
+				.birth(sdf.parse("1996-01-01"))
+				.mbti("ESTP")
+				.nickname("현욱")
+				.url(generateRandomString())
+				.build();
+		Users users5 = Users.builder()
+				.id(5)
+				.saju(saju5)
+				.birth(sdf.parse("1996-01-01"))
+				.mbti("ISFJ")
+				.nickname("영덕")
+				.url(generateRandomString())
+				.build();
+		Users users6 = Users.builder()
+				.id(6)
+				.saju(saju6)
+				.birth(sdf.parse("1996-01-01"))
+				.mbti("ESFJ")
+				.nickname("상연")
+				.url(generateRandomString())
+				.build();
+		usersRepository.save(users1);
+		usersRepository.save(users2);
+		usersRepository.save(users3);
+		usersRepository.save(users4);
+		usersRepository.save(users5);
+		usersRepository.save(users6);
+
+		////////////////////////////////////////
+		FriendCompatibilityData friendCompatibilityData1 = FriendCompatibilityData.builder()
+				.id(1)
+				.linkOwner(users1)
+				.friend(users2)
+				.mbtiCompatibility(mbtiCompatibilityData1)
+				.sajuCompatability(sajuCompatibilityData1)
+				.build();
+		FriendCompatibilityData friendCompatibilityData2 = FriendCompatibilityData.builder()
+				.id(2)
+				.linkOwner(users1)
+				.friend(users3)
+				.mbtiCompatibility(mbtiCompatibilityData2)
+				.sajuCompatability(sajuCompatibilityData2)
+				.build();
+		FriendCompatibilityData friendCompatibilityData3 = FriendCompatibilityData.builder()
+				.id(3)
+				.linkOwner(users1)
+				.friend(users4)
+				.mbtiCompatibility(mbtiCompatibilityData3)
+				.sajuCompatability(sajuCompatibilityData3)
+				.build();
+		FriendCompatibilityData friendCompatibilityData4 = FriendCompatibilityData.builder()
+				.id(4)
+				.linkOwner(users1)
+				.friend(users5)
+				.mbtiCompatibility(mbtiCompatibilityData4)
+				.sajuCompatability(sajuCompatibilityData4)
+				.build();
+		FriendCompatibilityData friendCompatibilityData5 = FriendCompatibilityData.builder()
+				.id(5)
+				.linkOwner(users1)
+				.friend(users6)
+				.mbtiCompatibility(mbtiCompatibilityData5)
+				.sajuCompatability(sajuCompatibilityData5)
+				.build();
+		FriendCompatibilityData friendCompatibilityData6 = FriendCompatibilityData.builder()
+				.id(6)
+				.linkOwner(users2)
+				.friend(users3)
+				.mbtiCompatibility(mbtiCompatibilityData6)
+				.sajuCompatability(sajuCompatibilityData6)
+				.build();
+		friendCompatabilityDataRepository.save(friendCompatibilityData1);
+		friendCompatabilityDataRepository.save(friendCompatibilityData2);
+		friendCompatabilityDataRepository.save(friendCompatibilityData3);
+		friendCompatabilityDataRepository.save(friendCompatibilityData4);
+		friendCompatabilityDataRepository.save(friendCompatibilityData5);
+		friendCompatabilityDataRepository.save(friendCompatibilityData6);
+	}
+
+	private String generateRandomString() {
+		String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		int length = 6;
+		SecureRandom random = new SecureRandom();
+		StringBuilder stringBuilder = new StringBuilder(length);
+		for (int i = 0; i < length; i++) {
+			int randomIndex = random.nextInt(CHARACTERS.length());
+			stringBuilder.append(CHARACTERS.charAt(randomIndex));
+		}
+		return stringBuilder.toString();
 	}
 }
