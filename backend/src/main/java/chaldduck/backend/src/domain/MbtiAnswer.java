@@ -18,6 +18,7 @@ public class MbtiAnswer {
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "mbti_question_id")
     private MbtiQuestion mbtiQuestion;
 
     @Column(name = "answer", nullable = false)

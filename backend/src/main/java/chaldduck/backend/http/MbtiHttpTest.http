@@ -26,3 +26,9 @@ Content-Type: application/json
 
 ### MBTI 궁합 데이터 가져오기
 GET localhost:8080/api/mbti/friend/compatibility?myMbti=ISTJ&friendMbti=INTP
+
+### 친구 리스트 가져오기
+GET localhost:8080/api/friend/list/url
+
+### 링크 주인의 친구 정보 가져오기
+GET localhost:8080/api/friend/list/He194kx

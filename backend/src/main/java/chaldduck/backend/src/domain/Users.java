@@ -31,4 +31,7 @@ public class Users {
     @Column(name = "mbti", nullable = false)
     private String mbti;
 
+    @Column(name = "url", nullable = false)
+    private String url;
+
 }
