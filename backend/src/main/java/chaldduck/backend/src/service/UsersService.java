@@ -27,7 +27,7 @@ public class UsersService {
 
     public UsersGetInfoResponseDTO getUserInfo(String nickname) {
         Users user = usersRepository.findByNickname(nickname);
-        return UsersGetInfoResponseDTO.of(user.getBirth(),user.getSaju().getFiveHang(),user.getSaju().getDescription()
-        ,user.getSaju().getImage(), Mbti.valueOf(user.getMbti()),"MBTI 설명 (enum이라 어찌 할지 모르겠음)","MBTI 이미지");
+        //Mbti mbti = user.mbti로 mbti 설명 가져오기
+        return UsersGetInfoResponseDTO.of(user);
     }
 }
