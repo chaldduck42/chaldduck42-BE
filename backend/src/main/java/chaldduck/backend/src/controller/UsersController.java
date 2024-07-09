@@ -1,6 +1,7 @@
 package chaldduck.backend.src.controller;
 
 import chaldduck.backend.src.dto.request.UsersInfoRequestDTO;
+import chaldduck.backend.src.dto.response.UsersGetInfoResponseDTO;
 import chaldduck.backend.src.service.UsersService;
 import lombok.RequiredArgsConstructor;
 
@@ -20,8 +21,7 @@ public class UsersController {
     }
 
     @GetMapping("/info")
-    public UsersAllInfoResponseDTO getUserInfo(@RequestBody String nickname) {
-
+    public UsersGetInfoResponseDTO getUserInfo(@RequestBody String nickname) {
         return usersService.getUserInfo(nickname);
 
     }

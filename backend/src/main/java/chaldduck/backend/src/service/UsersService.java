@@ -1,7 +1,8 @@
 package chaldduck.backend.src.service;
+import chaldduck.backend.global.enums.Mbti;
 import chaldduck.backend.src.domain.Users;
 import chaldduck.backend.src.dto.request.UsersInfoRequestDTO;
-import chaldduck.backend.src.dto.response.UsersAllInfoResponseDTO;
+import chaldduck.backend.src.dto.response.UsersGetInfoResponseDTO;
 import chaldduck.backend.src.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,9 @@ public class UsersService {
         return usersRepository.save(user);
     }
 
-    public UsersAllInfoResponseDTO getUserInfo(String nickname) {
+    public UsersGetInfoResponseDTO getUserInfo(String nickname) {
         Users user = usersRepository.findByNickname(nickname);
-        return UsersAllInfoResponseDTO.of
+        return UsersGetInfoResponseDTO.of(user.getBirth(),user.getSaju().getFiveHang(),user.getSaju().getDescription()
+        ,user.getSaju().getImage(), Mbti.valueOf(user.getMbti()),"MBTI 설명 (enum이라 어찌 할지 모르겠음)","MBTI 이미지");
     }
 }
