@@ -2,13 +2,14 @@ package chaldduck.backend.src.controller;
 
 import chaldduck.backend.src.dto.request.UsersInfoRequestDTO;
 import chaldduck.backend.src.dto.response.UsersGetInfoResponseDTO;
+import chaldduck.backend.src.dto.response.UsersInfoByHashResponseDTO;
 import chaldduck.backend.src.service.UsersService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UsersController {
     private UsersService usersService;
@@ -24,5 +25,10 @@ public class UsersController {
     public UsersGetInfoResponseDTO getUserInfo(@RequestBody String nickname) {
         return usersService.getUserInfo(nickname);
 
+    }
+
+    @GetMapping("/infoByHash/{urlHash}")
+    public UsersInfoByHashResponseDTO getUserInfoByHash(@RequestBody String urlHash) {
+        return usersService.getUserInfoByHash(urlHash);
     }
 }
