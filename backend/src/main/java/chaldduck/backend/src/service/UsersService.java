@@ -5,6 +5,7 @@ import chaldduck.backend.src.domain.Saju;
 import chaldduck.backend.src.domain.Users;
 import chaldduck.backend.src.dto.request.UsersInfoRequestDTO;
 import chaldduck.backend.src.dto.response.UsersGetInfoResponseDTO;
+import chaldduck.backend.src.dto.response.UsersInfoByHashResponseDTO;
 import chaldduck.backend.src.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,10 @@ public class UsersService {
         Users user = usersRepository.findByNickname(nickname);
         //Mbti mbti = user.mbti로 mbti 설명 가져오기
         return UsersGetInfoResponseDTO.of(user);
+    }
+
+    public UsersInfoByHashResponseDTO getUserInfoByHash(String urlHash){
+        Users user = usersRepository.findByUrl(urlHash);
+        return UsersInfoByHashResponseDTO.of(user);
     }
 }
