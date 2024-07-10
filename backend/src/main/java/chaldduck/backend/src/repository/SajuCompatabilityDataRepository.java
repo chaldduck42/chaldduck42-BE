@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SajuCompatabilityDataRepository extends JpaRepository<SajuCompatibilityData, Integer> {
+    SajuCompatibilityData findBySaju1AndSaju2(String friendSaju, String mySaju);
 }

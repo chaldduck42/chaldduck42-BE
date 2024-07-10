@@ -4,8 +4,11 @@ import chaldduck.backend.src.domain.FriendCompatibilityData;
 import chaldduck.backend.src.domain.MbtiCompatibilityData;
 import chaldduck.backend.src.domain.SajuCompatibilityData;
 import chaldduck.backend.src.domain.Users;
+import chaldduck.backend.src.dto.request.SajuCompabilityRequestDTO;
 import chaldduck.backend.src.dto.response.FriendResponseDTO;
+import chaldduck.backend.src.dto.response.SajuCompabilityResponseDTO;
 import chaldduck.backend.src.repository.FriendCompatabilityDataRepository;
+import chaldduck.backend.src.repository.SajuCompatabilityDataRepository;
 import chaldduck.backend.src.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,7 @@ public class FriendService {
 
     private final UsersRepository usersRepository;
     private final FriendCompatabilityDataRepository friendCompatabilityDataRepository;
+    private final SajuCompatabilityDataRepository sajuCompatabilityDataRepository;
 
     public List<FriendResponseDTO> getFriendList(String urlHash) {
         List<FriendResponseDTO> friendResponseDTOList = new ArrayList<>();
@@ -34,5 +38,11 @@ public class FriendService {
             friendResponseDTOList.add(friendResponseDTO);
         }
         return friendResponseDTOList;
+    }
+
+    public SajuCompabilityResponseDTO getSajuCompability(SajuCompabilityRequestDTO sajuCompabilityRequestDTO) {
+        SajuCompatibilityData sajuCompatibilityData = sajuCompatabilityDataRepository.findBySaju1AndSaju2(sajuCompabilityRequestDTO.getFriendSaju(), sajuCompabilityRequestDTO.getMySaju());
+        return SajuCompabilityResponseDTO.of(sajuCompatibilityData);
+
     }
 }
