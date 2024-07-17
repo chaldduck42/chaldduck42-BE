@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/saju")
+@RequestMapping("/api/saju")
 @RequiredArgsConstructor
 public class SajuController {
     private final SajuService sajuService;
