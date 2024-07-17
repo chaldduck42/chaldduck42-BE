@@ -12,8 +12,7 @@ public class UsersInfoByHashResponseDTO {
     private String sajuDescription;
     private String sajuImg;
     private String mbti;
-    private String mbtiDescription;
-    private String mbtiImg;
+
 
 
     public static UsersInfoByHashResponseDTO of(Users users) {
@@ -25,8 +24,6 @@ public class UsersInfoByHashResponseDTO {
         response.sajuDescription = users.getSaju().getDescription();
         response.sajuImg = users.getSaju().getImage();
         response.mbti = users.getMbti();
-        response.mbtiDescription = ""; //To do: MBTI domain 생성?
-        response.mbtiImg = "";
         return response;
     }
 }
