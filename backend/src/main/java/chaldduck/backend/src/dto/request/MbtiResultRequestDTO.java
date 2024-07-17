@@ -11,6 +11,16 @@ import java.util.List;
 @NoArgsConstructor
 public class MbtiResultRequestDTO {
 
-    private String type;
-    private int score;
+    private String nickname;
+
+    private List<MbtiResult> mbtiResultList;
+
+    @Getter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class MbtiResult {
+        private String type;
+
+        private int score;
+    }
 }

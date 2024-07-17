@@ -4,6 +4,7 @@ import chaldduck.backend.global.enums.Mbti;
 import chaldduck.backend.src.domain.MbtiAnswer;
 import chaldduck.backend.src.domain.MbtiCompatibilityData;
 import chaldduck.backend.src.domain.MbtiQuestion;
+import chaldduck.backend.src.domain.Users;
 import chaldduck.backend.src.dto.request.MbtiResultRequestDTO;
 import chaldduck.backend.src.dto.response.*;
 import chaldduck.backend.src.repository.MbtiAnswerRepository;
@@ -11,6 +12,7 @@ import chaldduck.backend.src.repository.MbtiCompatibilityDataRepository;
 import chaldduck.backend.src.repository.MbtiQuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MbtiService {
+
+    private final UsersService usersService;
 
     private final MbtiQuestionRepository mbtiQuestionRepository;
     private final MbtiAnswerRepository mbtiAnswerRepository;
@@ -44,11 +48,13 @@ public class MbtiService {
         return mbtiQuestionResponseDTOList;
     }
 
-    public MbtiResultResponseDTO getResult(List<MbtiResultRequestDTO> mbtiResultRequestDTOList) {
+    @Transactional
+    public MbtiResultResponseDTO getResult(MbtiResultRequestDTO mbtiResultRequestDTO) {
         StringBuilder mbti = new StringBuilder();
-        for (MbtiResultRequestDTO mbtiResultRequestDTO : mbtiResultRequestDTOList) {
-            String type = mbtiResultRequestDTO.getType();
-            int score = mbtiResultRequestDTO.getScore();
+        List<MbtiResultRequestDTO.MbtiResult> mbtiResultList = mbtiResultRequestDTO.getMbtiResultList();
+        for (MbtiResultRequestDTO.MbtiResult mbtiResult : mbtiResultList) {
+            String type = mbtiResult.getType();
+            int score = mbtiResult.getScore();
             if (type.equals(Mbti.EI.getValue())) {
                 if (score >= 0) mbti.append("E");
                 else mbti.append("I");
@@ -63,6 +69,8 @@ public class MbtiService {
                 else mbti.append("P");
             }
         }
+        // users mbti 컬럼 update
+        usersService.updateUsersMbtiByNickname(mbtiResultRequestDTO.getNickname(), mbti.toString());
         return MbtiResultResponseDTO.of(mbti.toString());
     }
 

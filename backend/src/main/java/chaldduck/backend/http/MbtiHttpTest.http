@@ -5,24 +5,27 @@ GET localhost:8080/api/mbti/questions
 POST localhost:8080/api/mbti/result
 Content-Type: application/json
 
-[
-  {
-    "type": "EI",
-    "score": 1
-  },
-  {
-    "type": "SN",
-    "score": 1
-  },
-  {
-    "type": "TF",
-    "score": 1
-  },
-  {
-    "type": "JP",
-    "score": 1
-  }
-]
+{
+  "nickname": "예림",
+  "mbtiResultList" : [
+    {
+      "type": "EI",
+      "score": 1
+    },
+    {
+      "type": "SN",
+      "score": 1
+    },
+    {
+      "type": "TF",
+      "score": 1
+    },
+    {
+      "type": "JP",
+      "score": 1
+    }
+  ]
+}
 
 ### MBTI 궁합 데이터 가져오기
 GET localhost:8080/api/mbti/friend/compatibility?myMbti=ISTJ&friendMbti=INTP

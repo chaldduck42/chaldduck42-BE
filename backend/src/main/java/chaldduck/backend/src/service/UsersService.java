@@ -9,6 +9,7 @@ import chaldduck.backend.src.dto.response.UsersInfoByHashResponseDTO;
 import chaldduck.backend.src.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -35,5 +36,11 @@ public class UsersService {
     public UsersInfoByHashResponseDTO getUserInfoByHash(String urlHash){
         Users user = usersRepository.findByUrl(urlHash);
         return UsersInfoByHashResponseDTO.of(user);
+    }
+
+    @Transactional
+    public void updateUsersMbtiByNickname(String nickname, String mbti) {
+        Users users = usersRepository.findByNickname(nickname);
+        users.updateMbti(mbti);
     }
 }
