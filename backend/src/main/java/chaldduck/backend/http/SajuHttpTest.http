@@ -1,0 +1,2 @@
+### 사주 결과 설명, 이미지 가져오기
+GET localhost:8080/api/saju/result/갑자

@@ -1,0 +1,11 @@
+### 생년월일 결과
+POST localhost:8080/api/user/info
+
+
+### 정보 입력후 본인 단일 결과 조회
+GET localhost:8080/api/user/info
+Content-Type: application/json
+{
+    "nickname": "bobo"
+}
+

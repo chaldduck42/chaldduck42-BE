@@ -19,10 +19,10 @@ public class MbtiCompatibilityData {
     private Integer id;
 
     @Column(name = "mbti_1", nullable = false)
-    private String mbti_1;
+    private String mbti1;
 
     @Column(name = "mbti_2", nullable = false)
-    private String mbti_2;
+    private String  mbti2;
 
     @Column(name = "image", nullable = false)
     private String image;

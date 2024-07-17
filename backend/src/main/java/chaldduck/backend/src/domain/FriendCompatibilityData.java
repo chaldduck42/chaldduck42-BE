@@ -17,19 +17,19 @@ public class FriendCompatibilityData {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @OneToOne //friend(FK)-친구
+    @ManyToOne   // friend_id 친구
+    @JoinColumn(name = "friend_id")
     private Users friend;
 
-    @ManyToOne //link_owner 링크의 주인
+    @ManyToOne   // link_owner 링크의 주인
+    @JoinColumn(name = "link_owner_id")
     private Users linkOwner;
 
-    @OneToOne //mbti_result_id
-    private MbtiCompatibilityData mbtiResultId;
+    @ManyToOne   // mbti 궁합
+    @JoinColumn(name = "mbti_compatibility_id")
+    private MbtiCompatibilityData mbtiCompatibility;
 
-    @OneToOne
+    @ManyToOne   // 사주 궁합
+    @JoinColumn(name = "saju_result_id")
     private SajuCompatibilityData sajuCompatability;
-
-
-
-
 }
