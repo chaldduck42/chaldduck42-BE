@@ -34,4 +34,8 @@ public class Users {
     @Column(name = "url", nullable = false)
     private String url;
 
+    public void updateMbti(String mbti) {
+        this.mbti = mbti;
+    }
+
 }
