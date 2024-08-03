@@ -11,6 +11,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class UsersInfoRequestDTO {
     private String nickname;
-    private Date birth;
+    private String birth;
 
 }

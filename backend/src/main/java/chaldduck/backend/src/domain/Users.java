@@ -23,7 +23,7 @@ public class Users {
     private Saju saju;
 
     @Column(name = "birth", nullable = false)
-    private Date birth;
+    private String birth;
 
     @Column(name = "nickname", nullable = false)
     private String nickname;
