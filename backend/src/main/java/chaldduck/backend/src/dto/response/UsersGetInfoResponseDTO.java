@@ -18,7 +18,7 @@ public class UsersGetInfoResponseDTO {
 
     public static UsersGetInfoResponseDTO of(Users users) {
         UsersGetInfoResponseDTO response = new UsersGetInfoResponseDTO();
-        response.birth = users.getBirth().toString();
+        response.birth = users.getBirth();
         response.fiveHang = users.getSaju().getFiveHang();
         response.sajuDescription = users.getSaju().getDescription();
         response.sajuImg = users.getSaju().getImage();

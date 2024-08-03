@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/mbti")
+@RequestMapping("/api/mbti")
 @RequiredArgsConstructor
 public class MbtiController {
 
@@ -23,8 +23,8 @@ public class MbtiController {
     }
 
     @PostMapping("/result")
-    public MbtiResultResponseDTO getResult(@RequestBody List<MbtiResultRequestDTO> mbtiResultRequestDTOList) {
-        return mbtiService.getResult(mbtiResultRequestDTOList);
+    public MbtiResultResponseDTO getResult(@RequestBody MbtiResultRequestDTO mbtiResultRequestDTO) {
+        return mbtiService.getResult(mbtiResultRequestDTO);
     }
 
     @GetMapping("/friend/compatibility")

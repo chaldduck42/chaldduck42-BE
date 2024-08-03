@@ -9,10 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UsersController {
-    private UsersService usersService;
+    private final UsersService usersService;
 
     @PostMapping("/info")
     public void createUsers(@RequestBody UsersInfoRequestDTO usersInfoRequestDTO) {

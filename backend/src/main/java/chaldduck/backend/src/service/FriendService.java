@@ -1,14 +1,12 @@
 package chaldduck.backend.src.service;
 
-import chaldduck.backend.src.domain.FriendCompatibilityData;
-import chaldduck.backend.src.domain.MbtiCompatibilityData;
-import chaldduck.backend.src.domain.SajuCompatibilityData;
-import chaldduck.backend.src.domain.Users;
+import chaldduck.backend.src.domain.*;
 import chaldduck.backend.src.dto.request.SajuCompabilityRequestDTO;
 import chaldduck.backend.src.dto.response.FriendResponseDTO;
 import chaldduck.backend.src.dto.response.SajuCompabilityResponseDTO;
 import chaldduck.backend.src.repository.FriendCompatabilityDataRepository;
 import chaldduck.backend.src.repository.SajuCompatabilityDataRepository;
+import chaldduck.backend.src.repository.SajuRepository;
 import chaldduck.backend.src.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +21,7 @@ public class FriendService {
     private final UsersRepository usersRepository;
     private final FriendCompatabilityDataRepository friendCompatabilityDataRepository;
     private final SajuCompatabilityDataRepository sajuCompatabilityDataRepository;
-
+    private final SajuRepository sajuRepository;
     public List<FriendResponseDTO> getFriendList(String urlHash) {
         List<FriendResponseDTO> friendResponseDTOList = new ArrayList<>();
         Users linkOwner = usersRepository.findByUrl(urlHash);   // 링크의 주인
@@ -41,7 +39,10 @@ public class FriendService {
     }
 
     public SajuCompabilityResponseDTO getSajuCompability(SajuCompabilityRequestDTO sajuCompabilityRequestDTO) {
-        SajuCompatibilityData sajuCompatibilityData = sajuCompatabilityDataRepository.findBySaju1AndSaju2(sajuCompabilityRequestDTO.getFriendSaju(), sajuCompabilityRequestDTO.getMySaju());
+        Saju saju1 = sajuRepository.findByFiveHang(sajuCompabilityRequestDTO.getFriendSaju());
+        Saju saju2 = sajuRepository.findByFiveHang(sajuCompabilityRequestDTO.getMySaju());
+
+        SajuCompatibilityData sajuCompatibilityData = sajuCompatabilityDataRepository.findBySaju1AndSaju2(saju1, saju2);
         return SajuCompabilityResponseDTO.of(sajuCompatibilityData);
 
     }
