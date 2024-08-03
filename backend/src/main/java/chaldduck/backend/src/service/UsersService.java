@@ -10,15 +10,23 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.SecureRandom;
+
 @Service
 @RequiredArgsConstructor
 public class UsersService {
     private final UsersRepository usersRepository;
 
+    // 가능한 문자들: 숫자, 대문자, 소문자
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    // 보안 랜덤 객체
+    private static final SecureRandom RANDOM = new SecureRandom();
+
     public Users saveUser(UsersInfoRequestDTO usersInfoRequestDTO) {
         // TODO 생년월일 기반으로 오행 정보 가져와서 넣어줘야함
-
-
+        int length = 10;
+        String randomString = generateRandomString(length);
         Users user = Users.builder()
                 .nickname(usersInfoRequestDTO.getNickname())
                 .birth(usersInfoRequestDTO.getBirth())
@@ -26,6 +34,7 @@ public class UsersService {
                         .fiveHang("갑자")
                         .build())
                 .mbti("mbti")
+                .url(randomString)
                 .build();
         return usersRepository.save(user);
     }
@@ -45,5 +54,14 @@ public class UsersService {
     public void updateUsersMbtiByNickname(String nickname, String mbti) {
         Users users = usersRepository.findByNickname(nickname);
         users.updateMbti(mbti);
+    }
+
+    private static String generateRandomString(int length) {
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int randomIndex = RANDOM.nextInt(CHARACTERS.length());
+            sb.append(CHARACTERS.charAt(randomIndex));
+        }
+        return sb.toString();
     }
 }
