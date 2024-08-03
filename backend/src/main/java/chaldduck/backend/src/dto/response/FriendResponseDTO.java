@@ -23,7 +23,7 @@ public class FriendResponseDTO {
         FriendResponseDTO response = new FriendResponseDTO();
         response.userId = friend.getId().toString();
         response.nickname = friend.getNickname();
-        response.birth = friend.getBirth().toString();
+        response.birth = friend.getBirth();
         response.sajuDescription = sajuCompatibilityData.getDescription();
         response.sajuImg = sajuCompatibilityData.getImage();
         response.mbtiDescription = mbtiCompatibilityData.getDescription();
