@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SajuRepository extends JpaRepository<Saju, Integer> {
-    Saju findByFiveHang(String saju);
+    Saju findByFiveHang(String fiveHang);
 }

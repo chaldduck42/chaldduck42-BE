@@ -5,6 +5,7 @@ import chaldduck.backend.src.domain.Users;
 import chaldduck.backend.src.dto.request.UsersInfoRequestDTO;
 import chaldduck.backend.src.dto.response.UsersGetInfoResponseDTO;
 import chaldduck.backend.src.dto.response.UsersInfoByHashResponseDTO;
+import chaldduck.backend.src.repository.SajuRepository;
 import chaldduck.backend.src.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,16 +24,19 @@ public class UsersService {
     // 보안 랜덤 객체
     private static final SecureRandom RANDOM = new SecureRandom();
 
+    private final SajuRepository sajuRepository;
+
     public Users saveUser(UsersInfoRequestDTO usersInfoRequestDTO) {
-        // TODO 생년월일 기반으로 오행 정보 가져와서 넣어줘야함
+        String sajuString = getSaju(usersInfoRequestDTO.getBirth());
+        Saju saju = sajuRepository.findByFiveHang(sajuString);
+
         int length = 10;
         String randomString = generateRandomString(length);
+
         Users user = Users.builder()
                 .nickname(usersInfoRequestDTO.getNickname())
                 .birth(usersInfoRequestDTO.getBirth())
-                .saju(Saju.builder()
-                        .fiveHang("갑자")
-                        .build())
+                .saju(saju)
                 .mbti("mbti")
                 .url(randomString)
                 .build();
@@ -63,5 +67,18 @@ public class UsersService {
             sb.append(CHARACTERS.charAt(randomIndex));
         }
         return sb.toString();
+    }
+
+    private static String getSaju(String birth) {
+        String yearString = birth.substring(4);
+        int year = Integer.parseInt(yearString);
+        String[] gan = {"갑", "을", "병", "정", "무", "기", "경", "신", "임", "계"};
+        String[] ji = {"자", "축", "인", "묘", "진", "사", "오", "미", "신", "유", "술", "해"};
+
+        // 간지 계산
+        int ganIndex = (year - 4) % 10; // 4는 갑자 시작 기준
+        int jiIndex = (year - 4) % 12;  // 4는 갑자 시작 기준
+
+        return gan[ganIndex] + ji[jiIndex];
     }
 }
