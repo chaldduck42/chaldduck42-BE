@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UsersController {
-    private UsersService usersService;
+    private final UsersService usersService;
 
     @PostMapping("/info")
     public void createUsers(@RequestBody UsersInfoRequestDTO usersInfoRequestDTO) {
