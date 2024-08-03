@@ -75,9 +75,9 @@ public class MbtiService {
     }
 
     public MbtiFriendCompatibilityResponseDTO getFriendCompatibility(String myMbti, String friendMbti) {
-        // 내 mbti와 친구 mbti 기준으로 궁합 정보(설명, 이미지) 가져오기
+        // 내 mbti와 친구 mbti 기준으로 궁합 정보(설명, 이미지, 궁합 점수) 가져오기
         MbtiCompatibilityData mbtiCompatibilityData = mbtiCompatibilityDataRepository.findByMbti1AndMbti2(myMbti, friendMbti);
-        return MbtiFriendCompatibilityResponseDTO.of(mbtiCompatibilityData.getDescription(), mbtiCompatibilityData.getImage());
+        return MbtiFriendCompatibilityResponseDTO.of(mbtiCompatibilityData);
     }
 
     private void getMBtiQuestionResponseDTO(List<MbtiQuestion> mbtiQuestions, Mbti mbti, List<MbtiQuestionResponseDTO> mbtiQuestionResponseDTOList) {

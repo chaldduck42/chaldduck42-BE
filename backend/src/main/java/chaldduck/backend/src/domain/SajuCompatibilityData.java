@@ -30,4 +30,7 @@ public class SajuCompatibilityData {
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "score", nullable = false)
+    private int score;
 }

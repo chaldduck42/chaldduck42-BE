@@ -29,4 +29,7 @@ public class MbtiCompatibilityData {
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "score", nullable = false)
+    private int score;
 }
