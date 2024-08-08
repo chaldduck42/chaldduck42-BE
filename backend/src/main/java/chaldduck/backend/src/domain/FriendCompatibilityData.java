@@ -32,4 +32,9 @@ public class FriendCompatibilityData {
     @ManyToOne   // 사주 궁합
     @JoinColumn(name = "saju_result_id")
     private SajuCompatibilityData sajuCompatability;
+
+    @Column(name = "total_score")
+    private int totalScore;
+    @Column(name = "description")
+    private String description;
 }
