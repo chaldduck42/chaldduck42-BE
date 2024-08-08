@@ -28,7 +28,7 @@ public class UsersController {
     }
 
     @GetMapping("/infoByHash/{urlHash}")
-    public UsersInfoByHashResponseDTO getUserInfoByHash(@RequestBody String urlHash) {
+    public UsersInfoByHashResponseDTO getUserInfoByHash(@PathVariable String urlHash) {
         return usersService.getUserInfoByHash(urlHash);
     }
 }

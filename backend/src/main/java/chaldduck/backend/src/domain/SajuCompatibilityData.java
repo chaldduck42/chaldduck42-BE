@@ -21,9 +21,15 @@ public class SajuCompatibilityData {
     @JoinColumn(name = "saju_1_id")
     private Saju saju1;
 
+    @Column(name = "saju_1_sex")
+    private String saju1Sex;
+
     @ManyToOne
     @JoinColumn(name = "saju_2_id")
     private Saju saju2;
+
+    @Column(name = "saju_2_sex")
+    private String saju2Sex;
 
     @Column(name = "image", nullable = false)
     private String image;

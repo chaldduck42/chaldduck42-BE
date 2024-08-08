@@ -12,6 +12,7 @@ public class UsersInfoByHashResponseDTO {
     private String sajuDescription;
     private String sajuImg;
     private String mbti;
+    private String sex;
 
 
 
@@ -19,11 +20,12 @@ public class UsersInfoByHashResponseDTO {
         UsersInfoByHashResponseDTO response = new UsersInfoByHashResponseDTO();
         response.userId = users.getId().toString();
         response.nickname = users.getNickname();
-        response.birth = users.getBirth().toString();
+        response.birth = users.getBirth();
         response.fiveHang = users.getSaju().getFiveHang();
         response.sajuDescription = users.getSaju().getDescription();
         response.sajuImg = users.getSaju().getImage();
         response.mbti = users.getMbti();
+        response.sex = users.getSex();
         return response;
     }
 }

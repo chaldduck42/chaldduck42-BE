@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Entity
 @Getter
 @Builder
@@ -33,6 +31,9 @@ public class Users {
 
     @Column(name = "url", nullable = false)
     private String url;
+
+    @Column(name = "sex")
+    private String sex;
 
     public void updateMbti(String mbti) {
         this.mbti = mbti;

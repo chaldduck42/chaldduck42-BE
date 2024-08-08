@@ -1,10 +1,7 @@
 package chaldduck.backend.src.dto.response;
 
-import chaldduck.backend.global.enums.Mbti;
 import chaldduck.backend.src.domain.Users;
 import lombok.Getter;
-
-import java.util.Date;
 
 @Getter
 public class UsersGetInfoResponseDTO {
@@ -13,6 +10,7 @@ public class UsersGetInfoResponseDTO {
     private String sajuDescription;
     private String sajuImg;
     private String mbti;
+    private String sex;
 
 
 
@@ -23,6 +21,7 @@ public class UsersGetInfoResponseDTO {
         response.sajuDescription = users.getSaju().getDescription();
         response.sajuImg = users.getSaju().getImage();
         response.mbti = users.getMbti();
+        response.sex = users.getSex();
         return response;
     }
 }

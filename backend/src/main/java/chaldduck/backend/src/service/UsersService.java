@@ -39,6 +39,7 @@ public class UsersService {
                 .saju(saju)
                 .mbti("mbti")
                 .url(randomString)
+                .sex(usersInfoRequestDTO.getSex())
                 .build();
         return usersRepository.save(user);
     }
